@@ -7,19 +7,21 @@ class ContaCorrente {
     agencia;
     // proposta de campos privados usando '#':
     // https://github.com/tc39/proposal-class-fields#private-fields
-    #saldo = 0;
+    _saldo = 0; // convenção adotada pela comunidade dev (não é de fato privado)
 
     depositar(valor) {
         if (valor > 0) {
-            this.#saldo += valor;
-            console.log("Deposito de " + this.#saldo + " realizado com sucesso!");
+            this._saldo += valor;
+            console.log("Depósito de " + valor + " realizado com sucesso!");
+            console.log("Novo saldo: " + this._saldo);
         }
     }
 
     sacar(valor) {
-        if ((this.#saldo >= valor) && (valor >= 0)) {
-            this.#saldo -= valor;
-            console.log("Saque de " + this.#saldo + " realizado com sucesso!");
+        if ((this._saldo >= valor) && (valor >= 0)) {
+            this._saldo -= valor;
+            console.log("Saque de " + valor + " realizado com sucesso!");
+            console.log("Novo saldo: " + this._saldo);
         }
     }
 }
