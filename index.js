@@ -18,11 +18,12 @@ class ContaCorrente {
     }
 
     sacar(valor) {
-        if ((this._saldo >= valor) && (valor >= 0)) {
-            this._saldo -= valor;
-            console.log("Saque de " + valor + " realizado com sucesso!");
-            console.log("Novo saldo: " + this._saldo);
+        if (valor < 0) {
+            return; // early return (interrompe a execução do método)
         }
+        this._saldo -= valor;
+        console.log("Saque de " + valor + " realizado com sucesso!");
+        console.log("Novo saldo: " + this._saldo);
     }
 }
 
