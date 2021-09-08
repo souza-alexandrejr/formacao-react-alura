@@ -1,9 +1,11 @@
 export class ContaCorrente {
     agencia;
+    cliente;
+    
     // proposta de campos privados usando '#':
     // https://github.com/tc39/proposal-class-fields#private-fields
     _saldo = 0; // convenção adotada pela comunidade dev (não é de fato privado)
-
+    
     depositar(valor) {
         if (valor > 0) {
             this._saldo += valor;
@@ -19,5 +21,11 @@ export class ContaCorrente {
         this._saldo -= valor;
         console.log("Saque de " + valor + " realizado com sucesso!");
         console.log("Novo saldo: " + this._saldo);
+        return valor;
+    }
+
+    transferir(valor, conta) {
+        const valorSacado = this.sacar(valor);
+        conta.depositar(valorSacado);
     }
 }
