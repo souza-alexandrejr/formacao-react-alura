@@ -1,4 +1,4 @@
-class ContaCorrente {
+export class ContaCorrente {
     agencia;
     // proposta de campos privados usando '#':
     // https://github.com/tc39/proposal-class-fields#private-fields
