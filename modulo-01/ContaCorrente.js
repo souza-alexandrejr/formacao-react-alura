@@ -1,10 +1,30 @@
+import { Cliente } from "./Cliente.js";
+
 export class ContaCorrente {
     agencia;
-    cliente;
+    _cliente;
     
     // proposta de campos privados usando '#':
     // https://github.com/tc39/proposal-class-fields#private-fields
     _saldo = 0; // convenção adotada pela comunidade dev (não é de fato privado)
+
+    // ENCAPSULAMENTO 
+
+    // dando acesso a um atributo privado de modo controlado
+    set cliente(cliente) {
+        if (cliente instanceof Cliente) {
+            this._cliente = cliente;
+        }
+    }
+
+    get cliente() {
+        return this._cliente;
+    }
+
+    // definindo somente o get do saldo (protegendo atributos sensíveis)
+    get saldo() {
+        return this._saldo;
+    }
     
     depositar(valor) {
         if (valor > 0) {
