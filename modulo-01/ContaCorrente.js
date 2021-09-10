@@ -8,6 +8,11 @@ export class ContaCorrente {
     // https://github.com/tc39/proposal-class-fields#private-fields
     _saldo = 0; // convenção adotada pela comunidade dev (não é de fato privado)
 
+    constructor(agencia, cliente) {
+        this.agencia = agencia;
+        this.cliente = cliente; // usando o acessor para atribuição
+    }
+
     // ENCAPSULAMENTO 
 
     // dando acesso a um atributo privado de modo controlado
