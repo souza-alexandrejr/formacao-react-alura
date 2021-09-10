@@ -1,33 +1,26 @@
 import { Cliente } from "./Cliente.js";
 import { ContaCorrente } from "./ContaCorrente.js";
 
-const cliente1 = new Cliente();
+// Criando clientes e suas respectivas contas correntes
 
-cliente1.nome = "Ricardo";
-cliente1.cpf = 11122233309;
+const cliente1 = new Cliente("Ricardo", 11122233309);
+const cliente2 = new Cliente("Alice", 88822233309);
 
-const contaCorrenteRicardo = new ContaCorrente();
-contaCorrenteRicardo.agencia = 1001;
-contaCorrenteRicardo.cliente = cliente1;
-
-contaCorrenteRicardo.depositar(100);
-contaCorrenteRicardo.depositar(300);
-contaCorrenteRicardo.sacar(200);
-contaCorrenteRicardo.sacar(50);
-
-const cliente2 = new Cliente();
-
-cliente2.nome = "Alice";
-cliente2.cpf = 88822233309;
-
-const contaCorrenteAlice = new ContaCorrente();
-contaCorrenteAlice.agencia = 1002;
-contaCorrenteAlice.cliente = cliente2;
+const contaCorrenteRicardo = new ContaCorrente(1001, cliente1);
+const contaCorrenteAlice = new ContaCorrente(1002, cliente2);
 
 console.log(cliente1);
 console.log(cliente2);
+
+// Testando métodos de depósito e saque
+
+contaCorrenteRicardo.depositar(400);
+contaCorrenteRicardo.sacar(250);
+
 console.log(contaCorrenteRicardo);
 console.log(contaCorrenteAlice);
+
+// Testando método de transferências entre CCs
 
 contaCorrenteRicardo.transferir(20, contaCorrenteAlice);
 
