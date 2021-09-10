@@ -26,3 +26,9 @@ contaCorrenteRicardo.transferir(20, contaCorrenteAlice);
 
 console.log(contaCorrenteRicardo);
 console.log(contaCorrenteAlice);
+
+// Testando atributos estáticos para o número de CCs
+
+const contaCorrenteAlex = new ContaCorrente();
+
+console.log("Número de CCs criadas: " + ContaCorrente.numeroDeContas);
