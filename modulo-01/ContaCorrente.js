@@ -28,7 +28,7 @@ export class ContaCorrente {
         return this._cliente;
     }
 
-    // definindo somente o get do saldo (protegendo atributos sensíveis)
+    // definindo somente o get do saldo (atributos "read-only")
     get saldo() {
         return this._saldo;
     }
