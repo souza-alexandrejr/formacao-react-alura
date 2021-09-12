@@ -1,8 +1,8 @@
-import { ContaPoupanca } from "./ContaPoupanca.js";
+import { ContaPoupanca } from "./Conta/ContaPoupanca.js";
 import { Cliente } from "./Cliente.js";
-import { ContaCorrente } from "./ContaCorrente.js";
-import { Conta } from "./Conta.js";
-import { ContaSalario } from "./ContaSalario.js";
+import { ContaCorrente } from "./Conta/ContaCorrente.js";
+import { Conta } from "./Conta/Conta.js";
+import { ContaSalario } from "./Conta/ContaSalario.js";
 
 // Criando clientes e suas respectivas contas correntes
 
