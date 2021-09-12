@@ -23,8 +23,4 @@ export class Cliente {
     set nome(nome) {
         this._nome = nome;
     }
-
-    autenticar(senha) {
-        return senha == this._senha;
-    }
 }
