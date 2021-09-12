@@ -1,6 +1,7 @@
 import { ContaPoupanca } from "./ContaPoupanca.js";
 import { Cliente } from "./Cliente.js";
 import { ContaCorrente } from "./ContaCorrente.js";
+import { Conta } from "./Conta.js";
 
 // Criando clientes e suas respectivas contas correntes
 
@@ -42,3 +43,7 @@ const ContaPoupancaRicardo = new ContaPoupanca(400, cliente1, 1001);
 
 ContaPoupancaRicardo.sacar(250);
 console.log(ContaPoupancaRicardo);
+
+// Testando erro de instanciamento de uma classe abstrata (Conta)
+
+const contaExtra = new Conta(400, cliente1, 1001);
