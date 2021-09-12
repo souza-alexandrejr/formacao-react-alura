@@ -2,6 +2,7 @@ import { ContaPoupanca } from "./ContaPoupanca.js";
 import { Cliente } from "./Cliente.js";
 import { ContaCorrente } from "./ContaCorrente.js";
 import { Conta } from "./Conta.js";
+import { ContaSalario } from "./ContaSalario.js";
 
 // Criando clientes e suas respectivas contas correntes
 
@@ -46,4 +47,11 @@ console.log(ContaPoupancaRicardo);
 
 // Testando erro de instanciamento de uma classe abstrata (Conta)
 
-const contaExtra = new Conta(400, cliente1, 1001);
+// const contaExtra = new Conta(400, cliente1, 1001);   // retorna Error
+
+// Testando chamada de método abstrato não implementado pela subclasse
+
+const contaSalario = new ContaSalario(cliente1);
+contaSalario.depositar(100);
+contaSalario.sacar(10);     // retorna Error
+console.log(contaSalario);

@@ -36,8 +36,8 @@ export class Conta {
     }
 
     sacar(valor) {
-        const taxa = 1;
-        return this._sacar(valor, taxa);
+        // método abstrato (deverá ser implementado pelas subclasses)
+        throw new Error("O método sacar da classe Conta é abstrato!");
     }
 
     _sacar(valor, taxa) {
