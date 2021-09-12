@@ -36,5 +36,9 @@ console.log("Número de CCs criadas: " + ContaCorrente.numeroDeContas);
 
 // Criação de uma conta poupança
 
-const ContaPoupancaRicardo = new ContaPoupanca(50, cliente1, 1001);
+const ContaPoupancaRicardo = new ContaPoupanca(400, cliente1, 1001);
+
+// Testando comportamento espećifico da CC vs. CP
+
+ContaPoupancaRicardo.sacar(250);
 console.log(ContaPoupancaRicardo);

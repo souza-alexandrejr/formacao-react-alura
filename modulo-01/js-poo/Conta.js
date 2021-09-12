@@ -4,7 +4,7 @@ export class Conta {
         this._cliente = cliente;
         this._agencia = agencia;
     }
-    
+
     // ENCAPSULAMENTO 
 
     // dando acesso a um atributo privado de modo controlado
@@ -26,7 +26,7 @@ export class Conta {
     depositar(valor) {
         if (valor > 0) {
             this._saldo += valor;
-            console.log("Depósito de " + valor + " realizado na CC com sucesso!");
+            console.log("Depósito de " + valor + " realizado com sucesso!");
             console.log("Novo saldo: " + this._saldo);
         }
     }
@@ -36,7 +36,7 @@ export class Conta {
             return; // early return (interrompe a execução do método)
         }
         this._saldo -= valor;
-        console.log("Saque de " + valor + " realizado da CC com sucesso!");
+        console.log("Saque de " + valor + " realizado com sucesso!");
         console.log("Novo saldo: " + this._saldo);
         return valor;
     }
