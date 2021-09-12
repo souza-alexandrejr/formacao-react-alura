@@ -1,3 +1,4 @@
+import { ContaPoupanca } from "./ContaPoupanca.js";
 import { Cliente } from "./Cliente.js";
 import { ContaCorrente } from "./ContaCorrente.js";
 
@@ -32,3 +33,8 @@ console.log(contaCorrenteAlice);
 const contaCorrenteAlex = new ContaCorrente();
 
 console.log("Número de CCs criadas: " + ContaCorrente.numeroDeContas);
+
+// Criação de uma conta poupança
+
+const ContaPoupancaRicardo = new ContaPoupanca(50, cliente1, 1001);
+console.log(ContaPoupancaRicardo);

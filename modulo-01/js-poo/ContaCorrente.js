@@ -2,16 +2,14 @@ import { Cliente } from "./Cliente.js";
 
 export class ContaCorrente {
     static numeroDeContas = 0;
-    agencia;
-    _cliente;
     
     // proposta de campos privados usando '#':
     // https://github.com/tc39/proposal-class-fields#private-fields
-    _saldo = 0; // convenção adotada pela comunidade dev (não é de fato privado)
 
     constructor(agencia, cliente) {
-        this.agencia = agencia;
-        this.cliente = cliente; // usando o acessor para atribuição
+        this._agencia = agencia;
+        this._cliente = cliente; // usando o acessor para atribuição
+        this._saldo = 0;         // convenção adotada pela comunidade dev (não é de fato privado)
         ContaCorrente.numeroDeContas += 1;
     }
 
@@ -36,7 +34,7 @@ export class ContaCorrente {
     depositar(valor) {
         if (valor > 0) {
             this._saldo += valor;
-            console.log("Depósito de " + valor + " realizado com sucesso!");
+            console.log("Depósito de " + valor + " realizado na CC com sucesso!");
             console.log("Novo saldo: " + this._saldo);
         }
     }
@@ -46,7 +44,7 @@ export class ContaCorrente {
             return; // early return (interrompe a execução do método)
         }
         this._saldo -= valor;
-        console.log("Saque de " + valor + " realizado com sucesso!");
+        console.log("Saque de " + valor + " realizado da CC com sucesso!");
         console.log("Novo saldo: " + this._saldo);
         return valor;
     }
