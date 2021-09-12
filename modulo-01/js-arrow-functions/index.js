@@ -3,11 +3,12 @@ class ModuloDeImpressao {
         this._codigo = 10;
     }
 
-    // uso do escopo léxico para acessar this._codigo 
+    // retorno TypeError pois this._codigo não faz parte
+    // do contexto da função passada no forEach
     imprime(nomes) {
-        nomes.forEach((nome) => {
+        nomes.forEach(function(nome){
         console.log(`${this._codigo}: ${nome}`);
-     });
+     }.bind(this));
    }
 }
 
