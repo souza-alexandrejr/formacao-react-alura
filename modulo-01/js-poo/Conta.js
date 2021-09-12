@@ -32,13 +32,18 @@ export class Conta {
     }
 
     sacar(valor) {
+        const taxa = 1;
+        return this._sacar(valor, taxa);
+    }
+
+    _sacar(valor, taxa) {
         if (valor < 0) {
-            return; // early return (interrompe a execução do método)
+            return 0;
         }
-        this._saldo -= valor;
+        this._saldo -= taxa * valor;
         console.log("Saque de " + valor + " realizado com sucesso!");
         console.log("Novo saldo: " + this._saldo);
-        return valor;
+        return valor * taxa;
     }
 
     transferir(valor, conta) {

@@ -9,15 +9,11 @@ export class ContaCorrente extends Conta {
         ContaCorrente.numeroDeContas += 1;
     }
 
+    // sobrescrevendo o comportamento do método sacar 
+    // da classe-mãe, utilizando atributos/métodos protected
     sacar(valor) {
-        if (valor < 0) {
-            return; // early return (interrompe a execução do método)
-        }
         const taxa = 1.1;
-        this._saldo -= taxa * valor;
         console.log("Taxa de serviço aplicada: " + taxa);
-        console.log("Saque de " + valor + " realizado com sucesso!");
-        console.log("Novo saldo: " + this._saldo);
-        return taxa * valor;
+        return super._sacar(valor, taxa);
     }
 }
