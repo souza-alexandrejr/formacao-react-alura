@@ -1,5 +1,5 @@
 import React from "react";
-import { ListaDeNotas } from "./components/ListaDeNotas";
+import ListaDeNotas from "./components/ListaDeNotas";
 
 function App() {
   return (
