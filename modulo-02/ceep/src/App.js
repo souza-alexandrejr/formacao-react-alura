@@ -10,6 +10,8 @@ import Notas from "./dados/Notas";
 class App extends Component {
   constructor(props) {
     super();
+
+    // padrão de projeto Observable
     this.categorias = new Categorias();
     this.notas = new Notas();
   }
@@ -24,17 +26,18 @@ class App extends Component {
     return (
       <section className="conteudo">
         <FormularioCadastro 
-          categorias={ this.categorias.categorias }
-          criarNota={ this.notas.criarNota }
+          categorias={ this.categorias }
+          criarNota={ this.notas.criarNota.bind(this.notas) }
         />
         <main className="conteudo-principal">
             <ListaDeCategorias 
-              categorias={ this.categorias.categorias }
-              adicionarCategoria={ this.categorias.adicionarCategoria }  
+              // passando o objeto inteiro para se ter acesso aos métodos
+              categorias={ this.categorias } 
+              adicionarCategoria={ this.categorias.adicionarCategoria.bind(this.categorias) }  
             />
             <ListaDeNotas 
-              apagarNota={ this.notas.deletarNota } 
-              notas={ this.notas.notas }
+              apagarNota={ this.notas.deletarNota.bind(this.notas) } 
+              notas={ this.notas }
             />
         </main>        
       </section>   
