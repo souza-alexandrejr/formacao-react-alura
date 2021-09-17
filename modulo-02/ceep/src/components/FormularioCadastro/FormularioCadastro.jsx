@@ -10,9 +10,10 @@ class FormularioCadastro extends Component {
         this.state = {
             categorias:[],
         }
+        this._novasCategorias = this._novasCategorias.bind(this);
     }
 
-    _notasCategorias(categorias) {
+    _novasCategorias(categorias) {
         this.setState({
             ...this.state,
             categorias,
@@ -20,7 +21,7 @@ class FormularioCadastro extends Component {
     }
 
     componentDidMount() {
-        this.props.categorias.inscrever(this._notasCategorias.bind(this));
+        this.props.categorias.inscrever(this._novasCategorias);
     }
 
     _criarNota(evento) {
@@ -42,6 +43,10 @@ class FormularioCadastro extends Component {
     _handleMudancaDeCategoria(evento) {
         evento.stopPropagation();
         this.categoria = evento.target.value;
+    }
+
+    componentWillUnmount() {
+        this.props.categorias.desinscrever(this._novasCategorias);
     }
 
     render() {

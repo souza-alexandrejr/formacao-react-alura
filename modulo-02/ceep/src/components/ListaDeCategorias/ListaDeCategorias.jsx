@@ -7,7 +7,9 @@ class ListaDeCategorias extends Component {
         this.state = {
             categorias:[],
         }
+        this._novasCategorias = this._novasCategorias.bind(this);
     }
+
     _novasCategorias(categorias) {
         this.setState({
             ...this.state, 
@@ -16,7 +18,7 @@ class ListaDeCategorias extends Component {
     }
 
     componentDidMount() {
-        this.props.categorias.inscrever(this._novasCategorias.bind(this));
+        this.props.categorias.inscrever(this._novasCategorias);
     }
 
     _handleEventoInput(e) {
@@ -24,6 +26,10 @@ class ListaDeCategorias extends Component {
             let nomeCategoria = e.target.value;
             this.props.adicionarCategoria(nomeCategoria);
         }
+    }
+
+    componentWillUnmount() {
+        this.props.categorias.desinscrever(this._novasCategorias);
     }
 
     render() { 

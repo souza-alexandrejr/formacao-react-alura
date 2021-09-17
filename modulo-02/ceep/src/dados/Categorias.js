@@ -11,6 +11,12 @@ class Categorias {
         this._inscritos.push(funcao);
     }
 
+    desinscrever(funcao) {
+        this._inscritos = this._inscritos.filter((func) => {
+            return func !== funcao;
+        })
+    }
+
     notificar() {
         // para cada elemento do array, 
         // será executada a função passada como parâmetro
