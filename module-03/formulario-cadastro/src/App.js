@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
 import FormularioCadastro from './components/FormularioCadastro/FormularioCadastro';
-import Container from '@mui/material/Container';
+import { Typography, Container } from '@mui/material';
+import '@fontsource/roboto/300.css';
 
 function App() {
   return (
     <Container maxWidth="sm" component="article">
-      <h1> Formulário de Cadastro </h1>
+      <Typography variant="h3" component="h1" align="center"> Formulário de Cadastro </Typography>
       <FormularioCadastro /> 
     </Container>    
   );

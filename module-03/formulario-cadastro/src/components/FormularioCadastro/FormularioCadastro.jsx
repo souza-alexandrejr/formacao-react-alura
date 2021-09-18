@@ -1,6 +1,5 @@
 import React from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+import { Button, TextField, FormControlLabel, Switch } from '@mui/material';
 
 function FormularioCadastro() {
     return (
@@ -9,11 +8,8 @@ function FormularioCadastro() {
             <TextField id="sobrenome" label="Sobrenome" variant="outlined" margin="normal" fullWidth />
             <TextField id="cpf" label="CPF" variant="outlined" margin="normal" fullWidth />
 
-            <label>Promoções</label>
-            <input type="checkbox" />
-
-            <label>Novidades</label>
-            <input type="checkbox" />
+            <FormControlLabel control={<Switch defaultChecked />} label="Promoções" />
+            <FormControlLabel control={<Switch defaultChecked />} label="Novidades" />
 
             <Button variant="contained" type="submit">
                 Cadastrar
