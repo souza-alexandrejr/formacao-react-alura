@@ -2,35 +2,22 @@ import React, { Fragment, useState } from "react";
 import DadosEntrega from "./DadosEntrega";
 import DadosPessoais from "./DadosPessoais";
 import DadosUsuario from "./DadosUsuario";
-import { Typography } from "@mui/material";
 
 function FormularioCadastro({ aoEnviar, validarCpf }) {
   const [etapaAtual, setEtapaAtual] = useState(0);
 
+  // outra abordagem pode ser a criação de um objeto do tipo chave:valor
+  const formularios = [
+    <DadosUsuario aoEnviar={proximaEtapa} />,
+    <DadosPessoais aoEnviar={proximaEtapa} validarCpf={validarCpf} />,
+    <DadosEntrega aoEnviar={aoEnviar} />,
+  ];
+
   function proximaEtapa() {
-    setEtapaAtual(etapaAtual+1);
+    setEtapaAtual(etapaAtual + 1);
   }
 
-  function formularioAtual(etapa) {
-    switch (etapa) {
-      case 0:
-        return <DadosUsuario aoEnviar={proximaEtapa} />;
-      case 1:
-        return <DadosPessoais aoEnviar={proximaEtapa} validarCpf={validarCpf} />;
-      case 2:
-        return <DadosEntrega aoEnviar={aoEnviar} />;
-      default:
-        return <Typography>{"Erro ao selecionar formulário!"}</Typography>;
-    }
-  }
-
-  return (
-    <Fragment>
-      {formularioAtual(etapaAtual)}
-    </Fragment>
-    );
+  return <Fragment>{formularios[etapaAtual]}</Fragment>;
 }
-
-
 
 export default FormularioCadastro;
