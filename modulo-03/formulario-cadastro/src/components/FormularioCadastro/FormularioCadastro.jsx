@@ -1,90 +1,15 @@
-import React, { useState } from "react";
-import { Button, TextField, FormControlLabel, Switch } from "@mui/material";
+import React, { Fragment } from "react";
+import DadosEntrega from "./DadosEntrega";
+import DadosPessoais from "./DadosPessoais";
+import DadosUsuario from "./DadosUsuario";
 
-function FormularioCadastro({ onSubmit, validarCpf }) {
-  const [nome, setNome] = useState("");
-  const [sobrenome, setSobrenome] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [promocoes, setPromocoes] = useState(true);
-  const [novidades, setNovidades] = useState(true);
-  const [erros, setErros] = useState({ cpf: { valido: true, texto: "" } });
-
+function FormularioCadastro({ aoEnviarForm, validarCpf }) {
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        onSubmit({ nome, sobrenome, cpf, promocoes, novidades });
-      }}
-    >
-      <TextField
-        id="nome"
-        label="Nome"
-        variant="outlined"
-        margin="normal"
-        fullWidth
-        value={nome}
-        onChange={(event) => {
-          setNome(event.target.value);
-        }}
-      />
-      <TextField
-        id="sobrenome"
-        label="Sobrenome"
-        variant="outlined"
-        margin="normal"
-        fullWidth
-        value={sobrenome}
-        onChange={(event) => {
-          setSobrenome(event.target.value);
-        }}
-      />
-      <TextField
-        id="cpf"
-        label="CPF"
-        variant="outlined"
-        margin="normal"
-        fullWidth
-        value={cpf}
-        onChange={(event) => {
-          setCpf(event.target.value);
-        }}
-        error={!erros.cpf.valido}
-        helperText={erros.cpf.texto}
-        onBlur={(event) => {
-          const ehValido = validarCpf(event.target.value);
-          setErros({
-            cpf: ehValido,
-          });
-        }}
-      />
-
-      <FormControlLabel
-        label="Promoções"
-        control={
-          <Switch
-            checked={promocoes}
-            onChange={(event) => {
-              setPromocoes(event.target.checked);
-            }}
-          />
-        }
-      />
-      <FormControlLabel
-        label="Novidades"
-        control={
-          <Switch
-            checked={novidades}
-            onChange={(event) => {
-              setNovidades(event.target.checked);
-            }}
-          />
-        }
-      />
-
-      <Button variant="contained" type="submit">
-        Cadastrar
-      </Button>
-    </form>
+    <Fragment>
+      <DadosPessoais onSubmit={aoEnviarForm} validarCpf={validarCpf} />
+      <DadosUsuario />
+      <DadosEntrega />
+    </Fragment>
   );
 }
 
