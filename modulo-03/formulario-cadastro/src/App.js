@@ -10,12 +10,12 @@ function App() {
       <Typography variant="h3" component="h1" align="center">
         {"Formulário de Cadastro"}
       </Typography>
-      <FormularioCadastro onSubmit={aoEnviarForm} validarCpf={validarCpf} />
+      <FormularioCadastro aoEnviar={aoEnviar} validarCpf={validarCpf} />
     </Container>
   );
 }
 
-function aoEnviarForm(dados) {
+function aoEnviar(dados) {
   console.log(dados);
 }
 

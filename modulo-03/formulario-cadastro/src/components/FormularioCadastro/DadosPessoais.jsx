@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, TextField, FormControlLabel, Switch } from "@mui/material";
 
-function DadosPessoais({ onSubmit, validarCpf }) {
+function DadosPessoais({ aoEnviar, validarCpf }) {
   const [nome, setNome] = useState("");
   const [sobrenome, setSobrenome] = useState("");
   const [cpf, setCpf] = useState("");
@@ -13,7 +13,7 @@ function DadosPessoais({ onSubmit, validarCpf }) {
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        onSubmit({ nome, sobrenome, cpf, promocoes, novidades });
+        aoEnviar({ nome, sobrenome, cpf, promocoes, novidades });
       }}
     >
       <TextField
