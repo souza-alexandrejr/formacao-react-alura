@@ -1,9 +1,12 @@
 import React from "react";
 import { Button, TextField } from "@mui/material";
 
-function DadosEntrega() {
+function DadosEntrega({aoEnviar}) {
   return (
-    <form>
+    <form onSubmit={(event) => {
+        event.preventDefault();
+        aoEnviar();
+    }}>
       <TextField
         id="cep"
         label="CEP"
