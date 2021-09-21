@@ -22,4 +22,12 @@ function validarNome(nome) {
   }
 }
 
-export { validarCpf, validarSenha, validarNome };
+function validarCep(nome) {
+  if (nome.length !== 8) {
+    return { valido: false, texto: "CEP deve ter apenas 8 dígitos!" };
+  } else {
+    return { valido: true, texto: "" };
+  }
+}
+
+export { validarCpf, validarSenha, validarNome, validarCep };

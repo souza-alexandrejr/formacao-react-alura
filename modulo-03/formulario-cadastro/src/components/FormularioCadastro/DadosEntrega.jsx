@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, TextField } from "@mui/material";
+import ValidacoesCadastro from "../../contexts/ValidacoesCadastro";
 
-function DadosEntrega({ aoEnviar, validacoes }) {
+function DadosEntrega({ aoEnviar }) {
   const [cep, setCep] = useState("");
   const [endereco, setEndereco] = useState("");
   const [numero, setNumero] = useState("");
   const [estado, setEstado] = useState("");
   const [cidade, setCidade] = useState("");
   const [erros, setErros] = useState({ cep: { valido: true, texto: "" } });
+
+  const validacoes = useContext(ValidacoesCadastro);
 
   function validarCampos(event) {
     const { name, value } = event.target;

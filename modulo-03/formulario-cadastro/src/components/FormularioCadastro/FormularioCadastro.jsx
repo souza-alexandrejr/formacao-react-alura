@@ -4,7 +4,7 @@ import DadosPessoais from "./DadosPessoais";
 import DadosUsuario from "./DadosUsuario";
 import { Typography, Stepper, Step, StepLabel } from "@mui/material";
 
-function FormularioCadastro({ aoEnviar, validacoes }) {
+function FormularioCadastro({ aoEnviar }) {
   const [dadosColetados, setDadosColetados] = useState({});
   const [etapaAtual, setEtapaAtual] = useState(0);
 
@@ -16,9 +16,9 @@ function FormularioCadastro({ aoEnviar, validacoes }) {
 
   // outra abordagem pode ser a criação de um objeto do tipo chave:valor
   const formularios = [
-    <DadosUsuario aoEnviar={coletarDados} validacoes={validacoes} />,
-    <DadosPessoais aoEnviar={coletarDados} validacoes={validacoes} />,
-    <DadosEntrega aoEnviar={coletarDados} validacoes={validacoes} />,
+    <DadosUsuario aoEnviar={coletarDados} />,
+    <DadosPessoais aoEnviar={coletarDados} />,
+    <DadosEntrega aoEnviar={coletarDados} />,
     <Typography variant="h5">{"Obrigado pelo cadastro!"}</Typography>,
   ];
 
