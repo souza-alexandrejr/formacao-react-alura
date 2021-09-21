@@ -4,26 +4,26 @@ import DadosPessoais from "./DadosPessoais";
 import DadosUsuario from "./DadosUsuario";
 import { Typography, Stepper, Step, StepLabel } from "@mui/material";
 
-function FormularioCadastro({ aoEnviar, validarCpf }) {
+function FormularioCadastro({ aoEnviar, validacoes }) {
   const [dadosColetados, setDadosColetados] = useState({});
   const [etapaAtual, setEtapaAtual] = useState(0);
 
   useEffect(() => {
-    if (etapaAtual === formularios.length-1) {
+    if (etapaAtual === formularios.length - 1) {
       aoEnviar(dadosColetados);
     }
-  })
+  });
 
   // outra abordagem pode ser a criação de um objeto do tipo chave:valor
   const formularios = [
-    <DadosUsuario aoEnviar={coletarDados} />,
-    <DadosPessoais aoEnviar={coletarDados} validarCpf={validarCpf} />,
-    <DadosEntrega aoEnviar={coletarDados} />,
-    <Typography variant="h5">{"Obrigado pelo cadastro!"}</Typography>
+    <DadosUsuario aoEnviar={coletarDados} validacoes={validacoes} />,
+    <DadosPessoais aoEnviar={coletarDados} validacoes={validacoes} />,
+    <DadosEntrega aoEnviar={coletarDados} validacoes={validacoes} />,
+    <Typography variant="h5">{"Obrigado pelo cadastro!"}</Typography>,
   ];
 
   function coletarDados(dados) {
-    setDadosColetados({...dadosColetados, ...dados});
+    setDadosColetados({ ...dadosColetados, ...dados });
     proximaEtapa();
   }
 
@@ -34,13 +34,22 @@ function FormularioCadastro({ aoEnviar, validarCpf }) {
   return (
     <Fragment>
       <Stepper activeStep={etapaAtual}>
-        <Step><StepLabel>Login</StepLabel></Step>
-        <Step><StepLabel>Pessoal</StepLabel></Step>
-        <Step><StepLabel>Entrega</StepLabel></Step>
-        <Step><StepLabel>Finalização</StepLabel></Step>
+        <Step>
+          <StepLabel>Login</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Pessoal</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Entrega</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Finalização</StepLabel>
+        </Step>
       </Stepper>
       {formularios[etapaAtual]}
-    </Fragment>);
+    </Fragment>
+  );
 }
 
 export default FormularioCadastro;

@@ -1,22 +1,42 @@
 import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
 
-function DadosEntrega({ aoEnviar }) {
+function DadosEntrega({ aoEnviar, validacoes }) {
   const [cep, setCep] = useState("");
   const [endereco, setEndereco] = useState("");
   const [numero, setNumero] = useState("");
   const [estado, setEstado] = useState("");
   const [cidade, setCidade] = useState("");
+  const [erros, setErros] = useState({ cep: { valido: true, texto: "" } });
+
+  function validarCampos(event) {
+    const { name, value } = event.target;
+    const novoEstado = { ...erros };
+    novoEstado[name] = validacoes[name](value);
+    setErros(novoEstado);
+  }
+
+  function camposValidos() {
+    for (let campo in erros) {
+      if (!erros[campo].valido) {
+        return false;
+      }
+    }
+    return true;
+  }
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        aoEnviar({ cep, endereco, numero, estado, cidade });
+        if (camposValidos()) {
+          aoEnviar({ cep, endereco, numero, estado, cidade });
+        }    
       }}
     >
       <TextField
         id="cep"
+        name="cep"
         label="CEP"
         type="number"
         variant="outlined"
@@ -25,9 +45,13 @@ function DadosEntrega({ aoEnviar }) {
         onChange={(event) => {
           setCep(event.target.value);
         }}
+        error={!erros.cep.valido}
+        helperText={erros.cep.texto}
+        onBlur={validarCampos}        
       />
       <TextField
         id="endereco"
+        name="endereco"
         label="Endereço"
         type="text"
         variant="outlined"
@@ -40,6 +64,7 @@ function DadosEntrega({ aoEnviar }) {
       />
       <TextField
         id="numero"
+        name="numero"
         label="Número"
         type="number"
         variant="outlined"
@@ -51,6 +76,7 @@ function DadosEntrega({ aoEnviar }) {
       />
       <TextField
         id="estado"
+        name="estado"
         label="Estado"
         type="text"
         variant="outlined"
@@ -62,6 +88,7 @@ function DadosEntrega({ aoEnviar }) {
       />
       <TextField
         id="cidade"
+        name="cidade"
         label="Cidade"
         type="text"
         variant="outlined"
