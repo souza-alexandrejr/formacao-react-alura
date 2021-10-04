@@ -1,8 +1,9 @@
-import './App.css';
-import './assets/css/base/base.css'
+import "./App.css";
+import "./assets/css/base/base.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from './paginas/Home';
-import Sobre from './paginas/Sobre';
+import Home from "./paginas/Home";
+import Sobre from "./paginas/Sobre";
+import Pagina404 from "./paginas/Pagina404";
 
 function App() {
   return (
@@ -11,9 +12,13 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        
+
         <Route path="/sobre">
           <Sobre />
+        </Route>
+
+        <Route>
+          <Pagina404 />
         </Route>
       </Switch>
     </Router>
