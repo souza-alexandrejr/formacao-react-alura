@@ -1,4 +1,5 @@
 import React from "react";
+import ListaPost from "../componentes/ListaPost";
 
 function Home() {
   return (
@@ -6,6 +7,7 @@ function Home() {
       <div className="container">
         <h2 className="titulo-pagina">Pet notícias</h2>
       </div>
+      <ListaPost url={'/posts'} />
     </main>
   );
 }
