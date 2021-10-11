@@ -14,11 +14,24 @@ import { render, screen } from "@testing-library/react";
 */
 
 // definição de estrutura com a descrição do teste e os casos de teste
-describe("Componente Principal", () => {
-  it("Mostrar o nome do banco", () => {
-    // renderiza o componente
-    render(<App />);
-    // verifica se a string passada como input está no documento HTML
-    expect(screen.getByText("ByteBank")).toBeInTheDocument();
+describe("Componente Principal: App", () => {
+  // incluindo outro describre para melhor visibilidade do log de testes
+  describe("Ao abrir o app do banco:", () => {
+    it("O nome do banco é exibido.", () => {
+      // renderiza o componente
+      render(<App />);
+      // verifica se a string passada como input está no documento HTML
+      expect(screen.getByText("ByteBank")).toBeInTheDocument();
+    });
+
+    it("O saldo é exibido.", () => {
+      render(<App />);
+      expect(screen.getByText("Saldo:")).toBeInTheDocument();
+    });
+
+    it("O botão de realizar transição.", () => {
+      render(<App />);
+      expect(screen.getByText("Realizar operação")).toBeInTheDocument();
+    });
   });
 });
