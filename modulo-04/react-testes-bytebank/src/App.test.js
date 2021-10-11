@@ -1,5 +1,5 @@
 import React from "react";
-import App from "./App";
+import App, { calcularNovoSaldo } from "./App";
 
 /* 
 Importando o render e o screen da lib de testes para que o 
@@ -35,3 +35,19 @@ describe("Componente Principal: App", () => {
     });
   });
 });
+
+// novo cenário: testando funções
+describe("Ao realizar uma transação:", () => {
+    it("O valor do saldo diminui, se for um saque.", () => {
+        // parâmetros de entrada da função
+        const saldo = 150;
+        const valores = {
+            transacao: "saque",
+            valor: 50,
+        }
+        // chamada da função a ser testada
+        const novoSaldo = calcularNovoSaldo(valores, saldo);
+        // verifica se o valor final é o esperado
+        expect(novoSaldo).toBe(100);
+    })
+})
