@@ -6,7 +6,8 @@ Importando o render e o screen da lib de testes para que o
 componente a ser testado seja renderizado e para que o teste 
 consiga acessar o tal componente, respectivamente.
 */
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { act } from "react-dom/test-utils";
 
 /*
  Convenção de Nomenclatura:
@@ -49,5 +50,24 @@ describe("Ao realizar uma transação:", () => {
         const novoSaldo = calcularNovoSaldo(valores, saldo);
         // verifica se o valor final é o esperado
         expect(novoSaldo).toBe(100);
-    })
+    }),
+    it("A transação deve ser realizada, se for um saque.", () => {
+        render(<App />);
+      
+        const saldo = screen.getByText('R$ 1000');
+        const transacao = screen.getByLabelText('Saque');
+        const valor = screen.getByTestId('valor');
+        const botaoTransacao = screen.getByText('Realizar operação');
+
+        // valor inicial esperado
+        expect(saldo.textContent).toBe('R$ 1000');
+
+        // simulando comportamento do usuário
+        fireEvent.click(transacao, { target: { value: 'Saque'}});
+        fireEvent.change(valor, { target: { value: 10}});
+        fireEvent.click(botaoTransacao);
+
+        // verificando o saldo esperado
+        expect(saldo.textContent).toBe('R$ 990');     
+  })
 })

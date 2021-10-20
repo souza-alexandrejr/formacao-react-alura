@@ -1,6 +1,6 @@
 {
   "conta": {
-    "saldo": 990
+    "saldo": 1000
   },
   "transacoes": [
     {
@@ -20,6 +20,66 @@
       "valor": "10",
       "data": "20/10/2021",
       "id": 3
+    },
+    {
+      "transacao": "Saque",
+      "valor": "10",
+      "data": "10/20/2021",
+      "id": 4
+    },
+    {
+      "transacao": "",
+      "valor": 0,
+      "data": "10/20/2021",
+      "id": 5
+    },
+    {
+      "transacao": "",
+      "valor": 0,
+      "data": "10/20/2021",
+      "id": 6
+    },
+    {
+      "transacao": "",
+      "valor": 0,
+      "data": "10/20/2021",
+      "id": 7
+    },
+    {
+      "transacao": "",
+      "valor": 0,
+      "data": "10/20/2021",
+      "id": 8
+    },
+    {
+      "transacao": "",
+      "valor": 0,
+      "data": "10/20/2021",
+      "id": 9
+    },
+    {
+      "transacao": "deposito",
+      "valor": "10",
+      "data": "20/10/2021",
+      "id": 10
+    },
+    {
+      "transacao": "",
+      "valor": 0,
+      "data": "10/20/2021",
+      "id": 11
+    },
+    {
+      "transacao": "",
+      "valor": 0,
+      "data": "10/20/2021",
+      "id": 12
+    },
+    {
+      "transacao": "Saque",
+      "valor": "10",
+      "data": "10/20/2021",
+      "id": 13
     }
   ]
 }
